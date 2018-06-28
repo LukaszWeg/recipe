@@ -6,12 +6,13 @@ import pl.lukasz.recipe.entity.Recipe;
 import pl.lukasz.recipe.repository.RecipeRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 @Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService {
 
-    public RecipeRepository recipeRepository;
+    private RecipeRepository recipeRepository;
 
     public RecipeServiceImpl(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
@@ -24,5 +25,16 @@ public class RecipeServiceImpl implements RecipeService {
 
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         return recipes;
+    }
+
+    @Override
+    public Recipe findById(Long l) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
+        if (!recipeOptional.isPresent()) {
+            throw new RuntimeException("Recipe Not Found!");
+        }
+
+        return recipeOptional.get();
     }
 }

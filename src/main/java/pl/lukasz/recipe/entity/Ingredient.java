@@ -1,9 +1,12 @@
 package pl.lukasz.recipe.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+
 
 @Data
 @Entity
@@ -19,5 +22,7 @@ public class Ingredient {
     private Recipe recipe;
     @OneToOne
     private UnitOfMeasure unitOfMeasure;
+
+
 
 }
