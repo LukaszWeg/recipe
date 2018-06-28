@@ -1,10 +1,16 @@
 package pl.lukasz.recipe.command;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.lukasz.recipe.entity.Difficulty;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class RecipeCommand {
     private Long id;
     private String description;
